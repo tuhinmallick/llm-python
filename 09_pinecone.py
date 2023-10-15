@@ -71,12 +71,12 @@ def create_pages(urls):
     return pages
 
 def build_docs(pages):
-    docs = {}
-    for page in pages:
-        docs[page] = SimpleDirectoryReader(
+    return {
+        page: SimpleDirectoryReader(
             input_files=[f"book/{page}.txt"]
         ).load_data()
-    return docs
+        for page in pages
+    }
 
 def build_context(model_name):
     llm_predictor = LLMPredictor(
@@ -144,6 +144,6 @@ if __name__ == "__main__":
     query_engine = indices["wande002.html"].as_query_engine(text_qa_template=QA_PROMPT)
     response = query_engine.query("What are important things according to Nietzsche?")
 
-    print(str(response))
+    print(response)
     print(response.get_formatted_sources())
 

@@ -92,9 +92,7 @@ if __name__ == "__main__":
         required=True
     )
     args = parser.parse_args()
-    query = args.query
-
-    if(query):
+    if query := args.query:
         res = query_engine.query(query)
         print(f"Query: {query}")
         print(f"Results: \n {res}")

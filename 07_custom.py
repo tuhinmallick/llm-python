@@ -97,7 +97,7 @@ def create_index():
 
 @timeit()
 def execute_query():
-    response = index.query(
+    return index.query(
         "Who does Indonesia export its coal to in 2023?",
         # This will preemptively filter out nodes that do not contain required_keywords
         # or contain exclude_keywords, reducing the search space and hence time/number of LLM calls/cost.
@@ -105,7 +105,6 @@ def execute_query():
         # required_keywords=["coal"],
         # exclude_keywords=["oil", "gas", "petroleum"]
     )
-    return response
 
 
 if __name__ == "__main__":
