@@ -101,11 +101,7 @@ def generate(prompt, model="base", num_generations=5, temperature=0.7, max_token
 
         text = generation.text.replace("\n", "")
 
-        generations[text] = 0
-
-        for tl in generation.token_likelihoods:
-            generations[text] += tl.likelihood
-
+        generations[text] = sum(tl.likelihood for tl in generation.token_likelihoods)
     # turn this into a dataframe
     df = pd.DataFrame.from_dict(generations, orient="index", columns=["likelihood"])
     df = df.sort_values(by=["likelihood"], ascending=False)

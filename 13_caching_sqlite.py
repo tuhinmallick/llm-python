@@ -34,7 +34,7 @@ with get_openai_callback() as cb:
     end = time.time()
     print("--- result1")
     print(result)
-    print(str(cb) + f" ({end - start:.2f} seconds)")
+    print(f"{str(cb)} ({end - start:.2f} seconds)")
 
 
 with get_openai_callback() as cb2:
@@ -43,4 +43,4 @@ with get_openai_callback() as cb2:
     end = time.time()
     print("--- result2")
     print(result)
-    print(str(cb2) + f" ({end - start:.2f} seconds)")
+    print(f"{str(cb2)} ({end - start:.2f} seconds)")
